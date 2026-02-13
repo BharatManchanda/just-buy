@@ -5,31 +5,31 @@ import LoadingIndicator, { useLoading } from "../Components/Common/LoadingIndica
 import PrivateRoute from "./PrivateRoutes";
 import AdminRoute from "./AdminRoutes";
 import GeneralLayout from "../Layouts/GeneralLayout";
-import AdminLayout from "../Pages/Admin/AdminLayout";
+import AdminLayout from "../Views/Admin/AdminLayout";
 import ProfileView from "../Components/Common/ProfileView";
-import CategoryProductsPage from "../Pages/Home/CategoryProductsPage";
-import CategoriesPage from "../Pages/Home/CategoriesPage";
-import AddressModal from "../Pages/Address";
-import ThankYouPage from "../Pages/ThankYouPage";
-import MyAccount from "../Pages/Account";
+import CategoryProductsPage from "../Views/Home/CategoryProductsPage";
+import CategoriesPage from "../Views/Home/CategoriesPage";
+import AddressModal from "../Views/Address";
+import ThankYouPage from "../Views/ThankYouPage";
+import MyAccount from "../Views/Account";
 import PageLoader from "../Components/Common/PageLoader";
 import { getMe } from "../store/redux/thunks";
 
 // Lazy-loaded Pages
-const Home = lazy(() => import("../Pages/Home"));
-const About = lazy(() => import("../Pages/About"));
-const PrivacyPolicy = lazy(() => import("../Pages/Public/PrivacyPolicy"));
-const TermsOfService = lazy(() => import("../Pages/Public/TermsOfService"));
-const BlogFeed = lazy(() => import("../Pages/Public/BlogFeed"));
-const FAQ = lazy(() => import("../Pages/Public/FAQ"));
-const Contact = lazy(() => import("../Pages/Contact"));
-const NotFound = lazy(() => import("../Pages/NotFound"));
-const Login = lazy(() => import("../Pages/Admin/Login"));
-const Logout = lazy(() => import("../Pages/Admin/Logout/Logout"));
-const Dashboard = lazy(() => import("../Pages/Admin/Dashboard"));
-const CategoryManager = lazy(() => import("../Pages/Admin/Products"));
-const ProductDetails = lazy(() => import("../Pages/Admin/Products/ProductDetails"));
-const Users = lazy(() => import("../Pages/Admin/Users"));
+const Home = lazy(() => import("../Views/Home"));
+const About = lazy(() => import("../Views/About"));
+const PrivacyPolicy = lazy(() => import("../Views/Public/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("../Views/Public/TermsOfService"));
+const BlogFeed = lazy(() => import("../Views/Public/BlogFeed"));
+const FAQ = lazy(() => import("../Views/Public/FAQ"));
+const Contact = lazy(() => import("../Views/Contact"));
+const NotFound = lazy(() => import("../Views/NotFound"));
+const Login = lazy(() => import("../Views/Admin/Login"));
+const Logout = lazy(() => import("../Views/Admin/Logout/Logout"));
+const Dashboard = lazy(() => import("../Views/Admin/Dashboard"));
+const CategoryManager = lazy(() => import("../Views/Admin/Products"));
+const ProductDetails = lazy(() => import("../Views/Admin/Products/ProductDetails"));
+const Users = lazy(() => import("../Views/Admin/Users"));
 
 const AppRoutes = () => {
   const user = useSelector((state) => state.auth.user);

@@ -22,11 +22,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import AccountMenu from './AccountMenu';
 import Cart from './Cart';
 import StickyCartBar from './StickyCartBar';
-import Login from '../../Pages/Login';
+import Login from '../../Views/Login';
 import icons from '../../Assets/Icons/Icons';
 import ThemeToggleButton from '../Common/ThemeToggleButton';
 import SearchBar from '../Common/SearchBar';
-import AddressModal from '../../Pages/Address';
+import AddressModal from '../../Views/Address';
 
 const userPages = [
   { link: '/', title: 'Home' },

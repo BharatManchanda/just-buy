@@ -2,8 +2,14 @@ import axios from "axios";
 import { showError, showSuccess } from "././Assets/Constants/showNotifier";
 import { Navigate } from "react-router-dom";
 import { logout } from "./store/redux/thunks";
+
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_URL ||
+  process.env.REACT_APP_URL ||
+  "http://localhost:6000";
+
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_URL+'/api',
+  baseURL: `${API_BASE_URL}/api`,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

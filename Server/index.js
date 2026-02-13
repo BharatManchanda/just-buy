@@ -12,7 +12,7 @@ app.use(cors({
   origin: process.env.CLIENT_URL, // or your frontend domain
   credentials: true
 }));
-
+console.log("Client URL:", process.env.CLIENT_URL);
 app.use(express.json());
 
 // Serve uploads folder correctly
