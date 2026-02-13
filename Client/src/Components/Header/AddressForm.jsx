@@ -17,6 +17,7 @@ import "leaflet/dist/leaflet.css";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import { useMap } from "react-leaflet";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -24,6 +25,16 @@ L.Icon.Default.mergeOptions({
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
 });
+
+
+function RecenterMap({ lat, lon }) {
+  const map = useMap();
+  useEffect(() => {
+    map.setView([lat, lon], map.getZoom(), { animate: true });
+  }, [lat, lon, map]);
+
+  return null;
+}
 
 export default function AddressForm({
   mode = "add",
@@ -45,6 +56,7 @@ export default function AddressForm({
   console.log("initialData", initialData);
   const [isDefault, setIsDefault] = useState(initialData?.isDefault || false);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   /* ---------------- VALIDATION ---------------- */
 
@@ -59,18 +71,21 @@ export default function AddressForm({
 
   /* ---------------- GEOLOCATION ---------------- */
 
-  const handleDetectLocation = () => {
+  const handleDetectLocation = async() => {
     navigator.geolocation.getCurrentPosition(
       async ({ coords }) => {
+        setLoading(true);
         setCoords({ lat: coords.latitude, lon: coords.longitude });
         const res = await fetch(
           `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coords.latitude}&lon=${coords.longitude}`
         );
         const data = await res.json();
+        setLoading(false);
         if (data?.display_name) setQuery(data.display_name);
       },
       () => alert("Location access denied")
     );
+    setLoading(false);
   };
 
   /* ---------------- SEARCH ---------------- */
@@ -109,6 +124,8 @@ export default function AddressForm({
     });
   };
 
+  console.log("coords", loading);
+
   /* ---------------- UI ---------------- */
 
   return (
@@ -127,7 +144,7 @@ export default function AddressForm({
             fullWidth
             sx={{ borderRadius: 99 }}
           >
-            Detect
+            {loading ? 'Detecting...':  'Detect'}
           </Button>
 
           <TextField
@@ -179,14 +196,15 @@ export default function AddressForm({
             boxShadow: 2,
           }}
         >
-          <MapContainer
-            center={[coords.lat, coords.lon]}
-            zoom={15}
-            style={{ height: "100%" }}
-          >
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker position={[coords.lat, coords.lon]} />
-          </MapContainer>
+        <MapContainer
+          center={[coords.lat, coords.lon]}
+          zoom={15}
+          style={{ height: "100%" }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <RecenterMap lat={coords.lat} lon={coords.lon} />
+          <Marker position={[coords.lat, coords.lon]} />
+        </MapContainer>
         </Box>
 
         {/* Fields */}

@@ -98,52 +98,68 @@ const AddressModal = ({ user }) => {
 
   /* -------------------- LOCATION DETECT -------------------- */
   const handleDetectLocation = () => {
-    setLoadingDetect(true);
+    if (!navigator.geolocation) {
+      showError("Geolocation not supported");
+      return;
+    }
 
+    
+    setLoadingDetect(true);
     navigator.geolocation.getCurrentPosition(
       async ({ coords }) => {
-        const pos = {
-          lat: coords.latitude,
-          lon: coords.longitude,
-        };
+        console.log("Success");
+        setLoadingDetect(true);
 
+        const pos = { lat: coords.latitude, lon: coords.longitude };
         setCoords(pos);
 
         const res = await fetch(
           `https://nominatim.openstreetmap.org/reverse?format=json&lat=${pos.lat}&lon=${pos.lon}`
         );
+        setLoadingDetect(false);
+
         const data = await res.json();
 
         if (data?.display_name) {
-          // setQuery(data.display_name);
           setLandmark(data.display_name);
           setFullAddress(data.display_name);
           setSuggestions([]);
         }
 
         if (!user) {
-          const guestData = {
-            name: "User",
-            addressLine: data.display_name,
-            house: "",
-            mobile: "",
-            landmark: "",
-            lat: pos.lat,
-            lon: pos.lon,
-          };
-          localStorage.setItem("guest_location", JSON.stringify(guestData));
+          localStorage.setItem(
+            "guest_location",
+            JSON.stringify({
+              name: "User",
+              addressLine: data.display_name,
+              house: "",
+              mobile: "",
+              landmark: "",
+              lat: pos.lat,
+              lon: pos.lon,
+            })
+          );
         }
 
-        setLoadingDetect(false);
         setOpen(false);
         setForceOpen(false);
       },
-      () => {
-        showError("Location access denied");
-        setLoadingDetect(false);
+      (err) => {
+        console.log("Error in getting location:", err);
+        if (err.code === err.PERMISSION_DENIED) {
+          setLoadingDetect(false);
+          showError("Please allow location access");
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
       }
     );
   };
+
+
 
   /* -------------------- SELECT SUGGESTION -------------------- */
   const selectSuggestion = (s) => {

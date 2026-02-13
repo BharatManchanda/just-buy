@@ -323,7 +323,7 @@ export default function Cart({ open, setOpen, setModalType }) {
       >
         <span>Grand Total</span>
         <span>
-          ₹{cart.total_cost + cart.handling_charges + cart.delivery_charges}
+          ₹{(cart.total_cost + cart.handling_charges + cart.delivery_charges).toFixed(2)}
         </span>
       </Box>
     </Paper>
