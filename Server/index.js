@@ -45,15 +45,19 @@ app.get('/ping', (req, res) => res.status(200).send('OK'));
 
 // ===== Start Server =====
 const port = process.env.PORT || 6000;
-const start = async () => {
-  try {
-    await connect();
-    app.listen(port, () => console.log(`Server running on port ${port}`));
-  } catch (error) {
-    console.log("Error starting server:", error);
-  }
-};
+// const start = async () => {
+//   try {
+//     await connect();
+//     app.listen(port, () => console.log(`Server running on port ${port}`));
+//   } catch (error) {
+//     console.log("Error starting server:", error);
+//   }
+// };
 
+app.listen(port, async () => {
+	await connect();
+	console.log(`Server running on http://localhost:${process.env.PORT}`);
+});
 // Export app for serverless deployment
 module.exports = app;
-if (!process.env.VERCEL) start(); // Only start server if running locally
+// if (!process.env.VERCEL) start(); // Only start server if running locally
