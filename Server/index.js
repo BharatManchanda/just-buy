@@ -8,7 +8,7 @@ const multer = require("multer");
 const { uploadImage } = require('./controllers/upload/upload');
 
 // Database connection
-const connect = require('./DB/connect');
+const connectDB = require('./DB/connect');
 const routes = require('./routes/index');
 
 // Middlewares
@@ -55,8 +55,8 @@ const port = process.env.PORT || 6000;
 // };
 
 app.listen(port, async () => {
-	await connect();
-	console.log(`Server running on http://localhost:${process.env.PORT}`);
+	await connectDB();
+	console.log(`Server running on http://localhost:${port}`);
 });
 // Export app for serverless deployment
 module.exports = app;
