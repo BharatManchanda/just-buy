@@ -1,4 +1,4 @@
-import { Grid, Skeleton, Typography, Box, useMediaQuery, useTheme } from "@mui/material";
+import { Grid, Skeleton, Box, useMediaQuery, useTheme } from "@mui/material";
 
 const CategorySkeleton = ({ count = 8 }) => {
   const theme = useTheme();
