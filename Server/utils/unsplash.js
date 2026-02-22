@@ -21,7 +21,7 @@ export const getImage = async (query) => {
       const image = result?.response?.results?.[0]?.urls?.small;
       return image || 'https://via.placeholder.com/400x300?text=No+Image';
     } catch (err) {
-      console.error(`❌ Error fetching image for "${query}":`, err.message);
+      console.error(`Error fetching image for "${query}":`, err.message);
       return 'https://via.placeholder.com/400x300?text=Error';
     }
   };
