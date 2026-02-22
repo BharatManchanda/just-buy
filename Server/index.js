@@ -31,9 +31,9 @@ const storage = process.env.VERCEL
 const upload = multer({ storage });
 
 // Serve uploads folder locally
-if (!process.env.VERCEL) {
-  app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-}
+// if (!process.env.VERCEL) {
+//   app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// }
 
 // ===== Routes =====
 app.get("/", (req, res) => res.send("Welcome to JustBuy API"));
@@ -45,19 +45,8 @@ app.get('/ping', (req, res) => res.status(200).send('OK'));
 
 // ===== Start Server =====
 const port = process.env.PORT || 6000;
-// const start = async () => {
-//   try {
-//     await connect();
-//     app.listen(port, () => console.log(`Server running on port ${port}`));
-//   } catch (error) {
-//     console.log("Error starting server:", error);
-//   }
-// };
 
 app.listen(port, async () => {
 	await connectDB();
 	console.log(`Server running on http://localhost:${port}`);
 });
-// Export app for serverless deployment
-module.exports = app;
-// if (!process.env.VERCEL) start(); // Only start server if running locally
