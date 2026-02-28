@@ -6,7 +6,7 @@ const icons = {
                     font-size="42" 
                     font-weight="800" 
                     letter-spacing="-1.5">
-                <tspan fill="#1A1A1B">BUY</tspan><tspan fill="#FF4500">NOW</tspan>
+                <tspan fill="#1A1A1B">Buy</tspan><tspan fill="#FF4500">Now</tspan>
             </text>
             
             <rect x="12" y="65" width="40" height="4" fill="#FF4500" rx="2" />
