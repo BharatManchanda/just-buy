@@ -199,7 +199,7 @@ export default function Cart({ open, setOpen, setModalType }) {
               <Stack direction="row" spacing={1.5} alignItems="center">
                 <Box>
                   <img
-                    src={item.imageUrl}
+                    src={`${process.env.REACT_APP_URL}${item.imageUrl}`}
                     alt={item.name}
                     width={60}
                     height={60}
