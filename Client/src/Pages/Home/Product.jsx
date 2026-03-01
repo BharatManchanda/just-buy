@@ -75,14 +75,14 @@ const Product = ({ product, handleAddItem, handleSubItem }) => {
             image={`${process.env.REACT_APP_URL}${product.imageUrl}`}
             alt={product.name}
             onLoad={() => setImageLoaded(true)}
-            onError={(e) => {
-              e.target.src = "https://via.placeholder.com/200x200.png?text=No+Image";
-              setImageLoaded(true);
-            }}
+            // onError={(e) => {
+            //   e.target.src = "https://via.placeholder.com/200x200.png?text=No+Image";
+            //   setImageLoaded(true);
+            // }}
             sx={{
               display: imageLoaded ? "block" : "none",
-              objectFit: "contain",
-              maxHeight: "100%",
+              objectFit: "cover",
+              // maxHeight: "100%",
               transition: "transform 0.25s ease",
               pt:3,
               "&:hover": { transform: "scale(1.05)" },
