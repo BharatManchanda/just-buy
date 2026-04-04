@@ -29,7 +29,11 @@ app.get('/ping', (req, res) => res.status(200).send('OK'));
 // ===== Start Server =====
 const port = process.env.PORT || 6000;
 
-app.listen(port, async () => {
-	await connectDB();
-	console.log(`Server running on http://localhost:${port}`);
+// app.listen(port, async () => {
+// 	await connectDB();
+// 	console.log(`Server running on http://localhost:${port}`);
+// });
+app.listen(port, "0.0.0.0", async () => {
+  await connectDB();
+  console.log(`Server running on http://localhost:${port}`);
 });
