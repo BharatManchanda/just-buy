@@ -1,4 +1,4 @@
-import NextApp from "../../src/NextApp";
+import NextApp from "../../NextApp";
 
 export default function CatchAllPage() {
   return <NextApp />;
