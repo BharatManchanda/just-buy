@@ -29,10 +29,17 @@ app.get('/ping', (req, res) => res.status(200).send('OK'));
 // ===== Start Server =====
 const port = process.env.PORT || 6000;
 
+app.use(express.static(path.join(__dirname, "../Client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Client/build", "index.html"));
+});
+
 // app.listen(port, async () => {
 // 	await connectDB();
 // 	console.log(`Server running on http://localhost:${port}`);
 // });
+
+
 app.listen(port, "0.0.0.0", async () => {
   await connectDB();
   console.log(`Server running on http://localhost:${port}`);
