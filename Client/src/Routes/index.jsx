@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import LoadingIndicator, { useLoading } from "../Components/Common/LoadingIndicator";
+import { useLoading } from "../Components/Common/LoadingIndicator";
 import PrivateRoute from "./PrivateRoutes";
 import AdminRoute from "./AdminRoutes";
 import GeneralLayout from "../Layouts/GeneralLayout";
@@ -14,7 +14,6 @@ import ThankYouPage from "../Views/ThankYouPage";
 import MyAccount from "../Views/Account";
 import PageLoader from "../Components/Common/PageLoader";
 import { getMe } from "../store/redux/thunks";
-
 // Lazy-loaded Pages
 const Home = lazy(() => import("../Views/Home"));
 const About = lazy(() => import("../Views/About"));
@@ -55,7 +54,7 @@ const AppRoutes = () => {
 
         <Route element={<GeneralLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/product/:productId" element={<ProductDetail />} />
+          <Route path="/product/:productId" element={<ProductDetails />} />
           <Route path="/category/:categoryId" element={<CategoryProductsPage />} />
           <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/about" element={<About />} />
