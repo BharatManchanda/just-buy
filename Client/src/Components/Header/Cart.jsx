@@ -13,7 +13,6 @@ import {
   Paper,
   Stack,
   Radio,
-  TextField,
 } from "@mui/material";
 import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
 import AddIcon from "@mui/icons-material/Add";
@@ -107,7 +106,7 @@ export default function Cart({ open, setOpen, setModalType }) {
         key: "rzp_test_spOg1mtGRCSHCE",
         amount: order.amount,
         currency: "INR",
-        name: "Just Buy",
+        name: "Buy Now",
         description: "Order Payment",
         order_id: order.id,
         handler: async function (response) {
@@ -200,7 +199,7 @@ export default function Cart({ open, setOpen, setModalType }) {
               <Stack direction="row" spacing={1.5} alignItems="center">
                 <Box>
                   <img
-                    src={item.imageUrl}
+                    src={`${process.env.REACT_APP_URL}${item.imageUrl}`}
                     alt={item.name}
                     width={60}
                     height={60}

@@ -13,6 +13,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { showWarning } from "../../Assets/Constants/showNotifier";
 import WatchLaterIcon from '@mui/icons-material/WatchLater';
 
@@ -20,13 +21,15 @@ const Product = ({ product, handleAddItem, handleSubItem }) => {
   const [productCount, setProductCount] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
   const cartItems = useSelector((state) => state.cart);
+  const navigate = useNavigate();
+  const productId = product?._id || product?.id;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   useEffect(() => {
-    const added = cartItems.items.find((item) => item._id === product._id);
+    const added = cartItems.items.find((item) => item._id === productId);
     setProductCount(added ? added.count : 0);
-  }, [cartItems, product._id]);
+  }, [cartItems, productId]);
 
   const getCurrentPrice = (discount, total) =>
     (total - (discount * total) / 100).toFixed(2);
@@ -39,8 +42,13 @@ const Product = ({ product, handleAddItem, handleSubItem }) => {
     handleAddItem(product);
   };
 
+  const handleOpenProduct = () => {
+    if (!productId) return;
+    navigate(`/product/${productId}`);
+  };
+
   return (
-    <Grid item xs={4} sm={4} md={3} lg={2}>
+    <Grid item xs={6} sm={4} md={3} lg={2}>
       <Card
         variant="outlined"
         sx={{
@@ -58,8 +66,9 @@ const Product = ({ product, handleAddItem, handleSubItem }) => {
       >
         {/* ---------- Product Image ---------- */}
         <Box
+          onClick={handleOpenProduct}
           sx={{
-            height: isMobile ? 100 : isTablet ? 100 : 100,
+            height: isMobile ? 96 : isTablet ? 100 : 100,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -67,24 +76,25 @@ const Product = ({ product, handleAddItem, handleSubItem }) => {
 
             bgcolor: "#f9f9f9",
             overflow: "hidden",
+            cursor: "pointer",
           }}
         >
           {!imageLoaded && <Skeleton variant="rectangular" width="100%" height="100%" />}
           <CardMedia
             component="img"
-            image={product.imageUrl}
+            image={`${process.env.REACT_APP_URL}${product.imageUrl}`}
             alt={product.name}
             onLoad={() => setImageLoaded(true)}
-            onError={(e) => {
-              e.target.src = "https://via.placeholder.com/200x200.png?text=No+Image";
-              setImageLoaded(true);
-            }}
+            // onError={(e) => {
+            //   e.target.src = "https://via.placeholder.com/200x200.png?text=No+Image";
+            //   setImageLoaded(true);
+            // }}
             sx={{
               display: imageLoaded ? "block" : "none",
-              objectFit: "contain",
-              maxHeight: "100%",
+              objectFit: "cover",
+              // maxHeight: "100%",
               transition: "transform 0.25s ease",
-              pt:3,
+              pt: 3,
               "&:hover": { transform: "scale(1.05)" },
             }}
           />
@@ -129,15 +139,17 @@ const Product = ({ product, handleAddItem, handleSubItem }) => {
               {product.prepTime || "9 min"}
             </Typography>
           </Box>
-          <Box sx={{display:'flex', justifyContent:'space-between'}}>
+          <Box>
           <Typography
             variant="body2"
             noWrap
+            onClick={handleOpenProduct}
             sx={{
               fontWeight: 600,
               lineHeight: 1.2,
               fontSize: isMobile ? "13px" : "13px",
               color: "text.primary",
+              cursor: "pointer",
             }}
           >
             {product.name}
@@ -207,15 +219,17 @@ const Product = ({ product, handleAddItem, handleSubItem }) => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
+                  justifyContent: isMobile ? "space-between" : "flex-start",
                   border: "1px solid",
                   borderColor: theme.palette.success.main,
                   borderRadius: "14px",
                   overflow: "hidden",
                   height: 26,
+                  width: isMobile ? "100%" : "auto",
                 }}
               >
                 <Button
-                  onClick={() => handleSubItem(product._id)}
+                  onClick={() => handleSubItem(productId)}
                   sx={{
                     minWidth: 24,
                     color: "success.main",
@@ -264,7 +278,7 @@ const Product = ({ product, handleAddItem, handleSubItem }) => {
                   px: 1.5,
                   py: 0.2,
                   height: 26,
-                  minWidth: 70,
+                  minWidth: isMobile ? "100%" : 70,
                   lineHeight: 1.2,
                 }}
               >

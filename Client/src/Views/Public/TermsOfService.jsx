@@ -12,7 +12,7 @@ const TermsOfService = () => {
       <Box textAlign="center" mb={4}>
         <GavelIcon color="primary" sx={{ fontSize: 50 }} />
         <Typography variant="h4" fontWeight={700} gutterBottom color="primary">
-          Just Buy Terms of Service
+          Buy Now Terms of Service
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">
           (Effective Date: {termsContent.effectiveDate})

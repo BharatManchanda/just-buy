@@ -7,6 +7,7 @@ const homeRoutes = require('./home'); // Ensure correct path to auth.js
 const addressRoutes = require('./addressRoutes'); // Ensure correct path to auth.js
 const razorpayRoutes = require('./razorpayRoutes'); // Ensure correct path to auth.js
 const orderRoutes = require('./orderRoutes'); // Ensure correct path to auth.js
+const { getProductById } = require('../controllers/home/home');
 const { handleLoginWithOtp, sentLoginOtp, handleGetMe } = require('../controllers/auth/auth');
 const { authMiddleware } = require('../middlewares/authMiddleware');
 
@@ -19,6 +20,7 @@ router.use("/admin", adminRoutes);
 router.use("/login", handleLoginWithOtp)
 router.use("/me", authMiddleware, handleGetMe )
 router.use("/sent-otp", sentLoginOtp)
+router.get("/product/:id", getProductById)
 router.use("/home", homeRoutes)
 router.use("/address",authMiddleware, addressRoutes)
 router.use("/payment",authMiddleware, razorpayRoutes)

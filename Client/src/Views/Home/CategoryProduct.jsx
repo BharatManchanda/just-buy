@@ -8,12 +8,17 @@ const CategoryProduct = ({ list, handleAddItem, handleSubItem }) => {
     <Box>
       {list.categoryWithProduct?.map((item, idx) =>
         item.products?.length > 0 ? (
-          <Box key={idx} my={4}>
-            <Box display={'flex'} justifyContent={'space-between'} alignItems="center">
+          <Box key={idx} my={{ xs: 3, md: 4 }}>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems={{ xs: "flex-end", sm: "center" }}
+              gap={1}
+            >
               <Typography
                 variant="h4"
                 sx={{
-                  mb: 3,
+                  mb: { xs: 2, md: 3 },
                   color: "primary.main",
                   textTransform: "capitalize",
                   letterSpacing: "0.5px",
@@ -37,7 +42,7 @@ const CategoryProduct = ({ list, handleAddItem, handleSubItem }) => {
 
               <Link to={`/category/${item._id}`} style={{ textDecoration: 'none' }}>
                 <Typography
-                  variant="body1"
+                  variant="body2"
                   sx={{
                     color: 'text.secondary',
                     fontWeight: 500,
@@ -55,7 +60,7 @@ const CategoryProduct = ({ list, handleAddItem, handleSubItem }) => {
                 </Typography>
               </Link>
             </Box>
-            <Grid container spacing={1} rowGap={1}>
+            <Grid container spacing={{ xs: 0.8, sm: 1 }} rowGap={1}>
               {item.products.map((product) => (
                 <Product
                   key={product._id}

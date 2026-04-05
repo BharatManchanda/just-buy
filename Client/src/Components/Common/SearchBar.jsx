@@ -3,12 +3,7 @@ import {
   Box,
   TextField,
   InputAdornment,
-  List,
-  ListItem,
-  Paper,
   Typography,
-  Divider,
-  Avatar,
   IconButton,
   useTheme,
 } from "@mui/material";
@@ -51,8 +46,6 @@ const SearchBar = ({ onFocusRemove, placeholder = "Search for products or catego
   const {
     searchQuery,
     setSearchQuery,
-    suggestions,
-    handleSuggestionClick,
     showSearchResult,
     setShowSearchResult,
     searchLoading,

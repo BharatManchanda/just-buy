@@ -267,10 +267,40 @@ const getSearchSuggestions = async (req, res) => {
   }
 };
 
+const getProductById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findById(id)
+      .populate({
+        path: "category_id",
+        select: "name parentCategory",
+        populate: {
+          path: "parentCategory",
+          select: "name",
+        },
+      })
+      .lean();
+
+    if (!product) {
+      return res.status(404).json({ success: false, message: "Product not found" });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Product detail fetched successfully",
+      data: product,
+    });
+  } catch (err) {
+    console.error("Error in getProductById:", err);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   getHome,
   getCategoryProducts,
   getCategories,
   searchProducts,
-  getSearchSuggestions
+  getSearchSuggestions,
+  getProductById,
 };

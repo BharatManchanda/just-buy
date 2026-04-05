@@ -36,7 +36,7 @@ export default function ProductsGrid({ list = [] }) {
       headerName: 'Icon',
       renderCell: (params) => (
         <img
-          src={params.row.imageUrl}
+          src={`${process.env.REACT_APP_URL}${params.row.imageUrl}`}
           alt="Preview"
           style={{
             width: '50px',

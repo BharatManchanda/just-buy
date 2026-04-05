@@ -76,7 +76,7 @@ const getCategoryProducts = async (req, res) => {
 const addNewProduct = async (req, res) => {
     try {
         const { categoryId, price, productName, discount } = JSON.parse(req.body.data);
-        const imageUrl = req.fileUrl; // already a full public URL
+        const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
         const newProduct = await Product.create({
             category_id:categoryId ,
             name: productName,
@@ -97,7 +97,7 @@ const addNewProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
         const { _id, price, productName, discount } = JSON.parse(req.body.data);
-
+        const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
         if (!_id) {
             return res.status(400).json({ message: "Product ID is required" });
         }
@@ -108,8 +108,8 @@ const updateProduct = async (req, res) => {
             discount,
         };
 
-        if (req.fileUrl) {
-            updateData.imageUrl = req.fileUrl; 
+        if (imageUrl) {
+            updateData.imageUrl = imageUrl; 
         }
 
         const updatedProduct = await Product.findOneAndUpdate(
@@ -137,7 +137,8 @@ const addNewCategory = async (req, res) => {
     try {
         const { category, parentCategory } = JSON.parse(req.body.data);
         
-        const imageUrl = req.fileUrl;
+        // const imageUrl = req.fileUrl;
+        const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
         let categoryRecord = await ProductCategory.create({ name: category, imageUrl: imageUrl, parentCategory: parentCategory});
         res.status(201).json({
             message: 'Category created successfully',

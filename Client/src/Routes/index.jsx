@@ -55,6 +55,7 @@ const AppRoutes = () => {
 
         <Route element={<GeneralLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/product/:productId" element={<ProductDetail />} />
           <Route path="/category/:categoryId" element={<CategoryProductsPage />} />
           <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/about" element={<About />} />

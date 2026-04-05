@@ -39,7 +39,7 @@ const CategoryGrid = ({ categories = [] }) => {
               <CardMedia
                 component="img"
                 height="140"
-                image={category.imageUrl || placeholder}
+                image={`${process.env.REACT_APP_URL}${category.imageUrl}`}
                 alt={category.name}
                 onError={(e) => {
                   e.target.src = placeholder;

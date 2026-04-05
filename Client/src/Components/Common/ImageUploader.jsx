@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button, Snackbar, Alert, IconButton } from '@mui/material';
+import { Box, Button, Snackbar, Alert, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useDispatch } from 'react-redux';
 import { showError, showSuccess } from '../../Assets/Constants/showNotifier';
 
 const ImageUploader = ({selectedImage, setSelectedImage}) => {
   const [error, setError] = useState('');
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const dispatch = useDispatch();
-  console.log("selectedImage",selectedImage);
-
 
 const handleImageUpload = async (event) => {
   const file = event.target.files[0];

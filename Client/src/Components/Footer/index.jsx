@@ -76,7 +76,7 @@ const Footer = () => {
       </Grid>
 
       <Box mt={4} textAlign="center" fontSize={13} color="text.secondary">
-        © {new Date().getFullYear()} JustBuy. All rights reserved.
+        © {new Date().getFullYear()} BuyNow. All rights reserved.
       </Box>
     </Box>
   );

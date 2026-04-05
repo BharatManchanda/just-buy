@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
   Card,
   CardContent,
-  Grid,
   Divider,
-  Chip,
-  Avatar,
   Stack,
-  Skeleton,
   useTheme,
   Button,
   useMediaQuery,
 } from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import apiConstants from "../../api/Constants";
 import HomeIcon from '@mui/icons-material/Home';
 import Orders from './Orders'
 import CommonBreadcrumbs from "../../Components/Common/CommonBreadcrumbs";

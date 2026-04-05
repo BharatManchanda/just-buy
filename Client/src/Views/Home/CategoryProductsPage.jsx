@@ -60,7 +60,7 @@ const CategoryProductsPage = () => {
   }
 
   return (
-    <Box px={isMobile ? 2 : 4} py={3}>
+    <Box  py={3}>
       <CommonBreadcrumbs
         items={[
           { label: "Home", to: "/" },

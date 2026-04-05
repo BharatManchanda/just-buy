@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
       <Box textAlign="center" mb={4}>
         <PolicyIcon color="primary" sx={{ fontSize: 50 }} />
         <Typography variant="h4" fontWeight={700} gutterBottom color="primary">
-          Just Buy Privacy Policy
+          Buy Now Privacy Policy
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">
           (Effective Date: {privacyPolicyContent.effectiveDate})

@@ -8,7 +8,7 @@ const AboutUs = () => {
       <Box textAlign="center" mb={4}>
         <InfoIcon color="primary" sx={{ fontSize: 50 }} />
         <Typography variant="h4" fontWeight={700} gutterBottom color="primary">
-          About Justbuy
+          About BuyNow
         </Typography>
         <Typography variant="subtitle1" color="text.primary">
           Delivering essentials in 10 minutes, revolutionizing local commerce.
@@ -16,7 +16,7 @@ const AboutUs = () => {
       </Box>
 
       <Typography paragraph sx={{ borderLeft: 4, borderColor: 'primary.main', pl: 2, py: 1, bgcolor: 'grey.50' }}>
-        Just Buy was founded on the principle that time is the most valuable commodity. In today's fast-paced world, waiting hours or even days for essentials is no longer acceptable. Inspired by the hyper-local delivery models of companies like Zepto and Blinkit, we built a network of strategically located "dark stores" and optimized our logistics chain to achieve a service goal of delivering orders within **10 minutes**.
+        Buy Now was founded on the principle that time is the most valuable commodity. In today's fast-paced world, waiting hours or even days for essentials is no longer acceptable. Inspired by the hyper-local delivery models of companies like Zepto and Blinkit, we built a network of strategically located "dark stores" and optimized our logistics chain to achieve a service goal of delivering orders within **10 minutes**.
       </Typography>
 
       <Box sx={{ mt: 4, borderBottom: 1, borderColor: 'divider', pb: 1 }}>

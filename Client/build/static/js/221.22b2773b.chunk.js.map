@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/221.22b2773b.chunk.js","mappings":"uJAGA,MAIA,EAJgBA,KACLC,EAAAA,EAAAA,KAAA,MAAAC,SAAI,c","sources":["Pages/Contact.jsx"],"sourcesContent":["// Contact.js\nimport React from \"react\";\n\nconst Contact = () => {\n    return <h1>Contact Us</h1>;\n};\n\nexport default Contact;\n"],"names":["Contact","_jsx","children"],"sourceRoot":""}

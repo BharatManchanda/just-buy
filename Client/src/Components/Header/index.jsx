@@ -5,26 +5,21 @@ import {
   Box,
   IconButton,
   Drawer,
-  List,
   ListItem,
   ListItemText,
-  TextField,
-  InputAdornment,
   useMediaQuery,
   useTheme,
   Badge,
+  Typography,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import AccountMenu from './AccountMenu';
 import Cart from './Cart';
 import StickyCartBar from './StickyCartBar';
 import Login from '../../Views/Login';
 import icons from '../../Assets/Icons/Icons';
-import ThemeToggleButton from '../Common/ThemeToggleButton';
 import SearchBar from '../Common/SearchBar';
 import AddressModal from '../../Views/Address';
 
@@ -42,7 +37,6 @@ const adminPages = [
 const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const dispatch = useDispatch();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
@@ -71,8 +65,11 @@ const Header = () => {
         <Toolbar sx={{ justifyContent: 'space-between', py: 1, p:'0px !important' }}>
           <Box display="flex" alignItems="center">
               <>
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                  {icons.justBuy}
+                <Link to="/" style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems:'center' }}>
+                  <img src="/Logo/logo.svg" alt="" srcset="" />
+                  <Typography sx={{ display: { xs: 'none', sm: 'block' } }}>
+                    {icons.BuyNow}
+                  </Typography>
                 </Link>
               </>
           </Box>

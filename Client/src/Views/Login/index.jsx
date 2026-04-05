@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import {
   Box,
   Button,
+  Divider,
   FormControl,
   IconButton,
   InputAdornment,
@@ -13,14 +14,12 @@ import {
   useTheme,
 } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import VerifiedUserRoundedIcon from '@mui/icons-material/VerifiedUserRounded';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginWithOtp, sendOtp } from '../../store/redux/thunks';
 import { resetOtpSent } from '../../store/redux/authSlice';
 import { showError } from '../../Assets/Constants/showNotifier';
 import CommonModal from '../../Components/Common/CommonModal';
-import ThemeButton from '../../Components/Common/ThemeButton';
-import appTheme from '../../Assets/Theme';
 
 export default function Login({ modalType, setModalType }) {
   const dispatch = useDispatch();
@@ -127,22 +126,27 @@ export default function Login({ modalType, setModalType }) {
         loginModal
         loading={loading}
       >
-        <Box width={isMobile ? '100%' : '400px'} px={2} py={1}>
+        <Box px={2} py={1}>
+          <Typography variant="body2" color="text.secondary" mb={1}>
+            Continue securely with your mobile number.
+          </Typography>
+
           <FormControl fullWidth variant="outlined">
             <InputLabel htmlFor="phone-input">Enter Mobile Number</InputLabel>
             <OutlinedInput
+              id="phone-input"
               value={formattedPhone}
               onChange={handlePhoneChange}
               startAdornment={<InputAdornment position="start">+91</InputAdornment>}
               label="Enter Mobile Number"
               type="tel"
               inputMode="numeric"
-              sx={{
-                borderRadius: 2,
-                "& input": { letterSpacing: "2px", fontSize: "18px" },
-              }}
             />
           </FormControl>
+
+          <Typography variant="caption" color="text.secondary" mt={1.5} display="block" lineHeight={1.5}>
+            By continuing, you agree to receive OTP messages for authentication.
+          </Typography>
         </Box>
       </CommonModal>
 
@@ -155,6 +159,26 @@ export default function Login({ modalType, setModalType }) {
         loading={loading}
       >
         <Box width={isMobile ? '100%' : '400px'} px={2} py={1}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 1,
+              mb: 0.5,
+            }}
+          >
+            <VerifiedUserRoundedIcon color="primary" fontSize="small" />
+            <Typography variant="body2" color="text.secondary">
+              Enter the 6-digit code sent to your phone
+            </Typography>
+          </Box>
+          <Typography variant="caption" color="text.secondary" textAlign="center" display="block">
+            +91 {phone}
+          </Typography>
+
+          <Divider sx={{ my: 2 }} />
+
           <Box display="flex" gap={1} justifyContent="center" mt={2}>
             {otp.map((digit, i) => (
               <TextField
@@ -173,10 +197,19 @@ export default function Login({ modalType, setModalType }) {
                   },
                 }}
                 sx={{
-                  width: 45,
-                  borderRadius:50,
+                  width: 48,
+                  borderRadius: 2,
                   "& .MuiOutlinedInput-root": {
-                    borderRadius: 50,
+                    borderRadius: 2,
+                    // backgroundColor: 'background.default',
+                    transition: 'all 0.2s ease',
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: 'rgba(0,0,0,0.14)',
+                    },
+                    '&.Mui-focused': {
+                      transform: 'translateY(-1px)',
+                      boxShadow: '0 0 0 2px rgba(255,127,17,0.14)',
+                    },
                   },
                 }}
               />
@@ -187,13 +220,13 @@ export default function Login({ modalType, setModalType }) {
               <Typography variant="body2" mt={1} textAlign="center">
                 OTP sent to <strong>+91 {phone}</strong>
               </Typography>
-              <Typography variant="body2" mt={1} textAlign="center">
+              <Typography variant="body2" mt={1} textAlign="center" color="text.secondary" fontSize="0.85rem">
                 This is for demo purposes. Use <strong>123456</strong> as OTP.
               </Typography>
             </>
           )}
           <Box display="flex" justifyContent="center" mt={2}>
-            <Button variant="text" onClick={handleChangeNumber}>
+            <Button variant="text" onClick={handleChangeNumber} sx={{ fontWeight: 600 }}>
               Change Number?
             </Button>
           </Box>

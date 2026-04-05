@@ -45,11 +45,11 @@ export const termsContent = {
   sections: [
     {
       title: '1. Acceptance of Terms',
-      description: 'By creating an account or using the Just Buy application, you agree to be bound by these Terms of Service ("Terms").',
+      description: 'By creating an account or using the Buy Now application, you agree to be bound by these Terms of Service ("Terms").',
     },
     {
       title: '2. The Service',
-      description: 'Just Buy provides a platform for rapid delivery of groceries and essentials from local dark stores. Our goal is to complete delivery within 10 minutes.',
+      description: 'Buy Now provides a platform for rapid delivery of groceries and essentials from local dark stores. Our goal is to complete delivery within 10 minutes.',
     },
     {
       title: '3. The 10-Minute Promise (Important)',
@@ -58,7 +58,7 @@ export const termsContent = {
         'The 10-minute delivery promise is an **average service goal** and **not a guarantee** for every individual order.',
         'The promise applies only to areas within our defined delivery zone.',
         'Delays may occur due to external factors outside our control (e.g., severe weather, traffic restrictions, high order volume, or incorrect address provided by the user).',
-        'Just Buy reserves the right to modify or withdraw any compensation related to delays at any time.',
+        'Buy Now reserves the right to modify or withdraw any compensation related to delays at any time.',
       ],
     },
     {
@@ -75,7 +75,7 @@ export const termsContent = {
       description: 'Policies governing order modification:',
       listItems: [
         '**Cancellation Window:** Due to the rapid nature of our service, cancellation is only possible within the first 60 seconds after placing the order.',
-        '**Refunds:** Products damaged upon receipt may be eligible for a refund or replacement. All refund requests are subject to review by the Just Buy support team.',
+        '**Refunds:** Products damaged upon receipt may be eligible for a refund or replacement. All refund requests are subject to review by the Buy Now support team.',
       ],
     },
   ],
@@ -83,8 +83,8 @@ export const termsContent = {
 
 export const faqData = [
     { 
-        question: 'What is Just Buy?', 
-        answer: 'Just Buy is a rapid delivery service that brings your groceries, snacks, and essentials from our local dark stores directly to your door in approximately 10 minutes.' 
+        question: 'What is Buy Now?', 
+        answer: 'Buy Now is a rapid delivery service that brings your groceries, snacks, and essentials from our local dark stores directly to your door in approximately 10 minutes.' 
     },
     { 
         question: 'How does the 10-minute delivery work?', 
@@ -110,7 +110,7 @@ export const faqData = [
 
 export const blogPosts = [
     {
-        title: 'How Just Buy Delivers Groceries in 10 Minutes: A Deep Dive into Logistics',
+        title: 'How Buy Now Delivers Groceries in 10 Minutes: A Deep Dive into Logistics',
         summary: 'We lift the curtain on the technology that powers our hyper-fast delivery system, covering dark store optimization and proprietary routing algorithms.',
         category: 'Logistics & Tech',
         categoryColor: 'primary',
@@ -127,7 +127,7 @@ export const blogPosts = [
     },
     {
         title: 'Meet Our Warehouse Team: The Real Speedsters',
-        summary: 'A look at the dedicated team members who pack your order in 90 seconds flat. Their efficiency is key to the Just Buy promise.',
+        summary: 'A look at the dedicated team members who pack your order in 90 seconds flat. Their efficiency is key to the Buy Now promise.',
         category: 'Community',
         categoryColor: 'info',
         slug: 'meet-the-team',

@@ -55,7 +55,10 @@ export default function AdminLayout() {
     >
       <Box sx={{ px: 2, pb: 1 }}>
         <Link to="/" style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center' }}>
-          {icons.justBuy}
+          <img src="/Logo/logo.svg" alt="" srcset="" />
+          <Typography sx={{ display: { xs: 'none', sm: 'block' } }}>
+            {icons.BuyNow}
+          </Typography>
         </Link>
       </Box>
 

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunke_commerce=self.webpackChunke_commerce||[]).push([[942],{8942(e,c,r){r.r(c),r.d(c,{default:()=>f});var s=r(5043),o=r(3003),t=r(1474),u=r(5029),a=r(6415),n=r(579);const f=()=>{const e=(0,o.wA)(),c=(0,u.Zp)();return(0,s.useEffect)(()=>{(async()=>{try{e((0,t.ri)()),c("/")}catch(r){(0,a.Qg)(r.message||"Logout failed"),console.error("Logout failed:",r)}})()},[e,c]),(0,n.jsx)("div",{children:"Logging Out..."})}}}]);
+//# sourceMappingURL=942.e84a6b49.chunk.js.map

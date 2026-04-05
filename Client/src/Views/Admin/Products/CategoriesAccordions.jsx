@@ -103,7 +103,7 @@ export default function CategoriesAccordions({getCategories}) {
               <Box display="flex" alignItems="center" justifyContent="space-between" width="100%">
                 <Box display="flex" alignItems="center" gap={1}>
                   <img
-                    src={category.imageUrl}
+                    src={`${process.env.REACT_APP_URL}${category.imageUrl}`}
                     alt={category.name}
                     style={{
                       width: 40,

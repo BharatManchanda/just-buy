@@ -14,20 +14,16 @@ import {
   Settings,
   Dashboard as DashboardIcon,
   Category as CategoryIcon,
-  ShoppingBag as OrdersIcon,
   AccountCircle as ProfileIcon,
   AccountCircle,
 } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logout, logoutUser } from '../../store/redux/thunks';
-import HomeIcon from '@mui/icons-material/Home';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
 const AccountMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const authState = useSelector((state) => state.auth);
   const user = authState.user;
 

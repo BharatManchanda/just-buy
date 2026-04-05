@@ -11,7 +11,7 @@ const BlogFeed = () => {
       <Box textAlign="center" mb={5}>
         <FeedIcon color="primary" sx={{ fontSize: 50 }} />
         <Typography variant="h4" fontWeight={700} gutterBottom color="primary">
-          Just Buy Blog Feed
+          Buy Now Blog Feed
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">
           Behind the scenes of rapid delivery, logistics, and community news.
